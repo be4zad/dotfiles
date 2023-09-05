@@ -1,0 +1,84 @@
+" =================================================
+" Description: Vim personal config of be4zad
+" Repo       : https://github.com/be4zad/vimrc
+" License    : GPL v3.0
+" Plugins    : vim-plug, NERDTree, editorconfig-vim
+" =================================================
+
+" Get the defaults that most users want
+source $VIMRUNTIME/defaults.vim
+
+
+" Indent settings
+set autoindent
+set smartindent
+set copyindent
+set preserveindent
+set expandtab
+set shiftwidth=2
+set tabstop=4
+
+
+" Highlighting
+syntax on
+
+
+" Line numbers
+set number
+hi LineNr ctermfg=DarkGrey
+
+
+" Ignore case in search patterns
+set ic
+
+
+" Enable mouse if available
+if has('mouse')
+  set mouse=a
+endif
+
+
+" Length marker
+set colorcolumn=80
+hi ColorColumn ctermbg=White ctermfg=Black
+
+
+" Install vim-plug if not found
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+endif
+
+
+" Plugins
+call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
+  Plug 'preservim/nerdtree'
+  Plug 'editorconfig/editorconfig-vim'
+call plug#end()
+
+
+" Run PlugInstall if there are missing plugins
+autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \| PlugInstall --sync | source $MYVIMRC
+\| endif
+
+
+" Run plugins
+" NERDTree Begin
+
+" Start NERDTree and leave the cursor in it.
+autocmd VimEnter * NERDTree
+
+" If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
+autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
+    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
+
+
+" Open the existing NERDTree on each new tab.
+autocmd BufWinEnter * if &buftype != 'quickfix' && getcmdwintype() == '' | silent NERDTreeMirror | endif
+
+
+let NERDTreeShowHidden=1
+let NERDTreeMouseMode=2
+
+" NERDTree End
