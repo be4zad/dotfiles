@@ -79,3 +79,10 @@ set background=dark
 colorscheme PaperColor
 
 " papercolor-theme End
+
+" fugitive Begin
+
+" Add branch name to statusline
+set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
+
+" fugitive End
