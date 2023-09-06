@@ -8,7 +8,6 @@
 " Get the defaults that most users want
 source $VIMRUNTIME/defaults.vim
 
-
 " Indent settings
 set autoindent
 set smartindent
@@ -18,30 +17,28 @@ set expandtab
 set shiftwidth=2
 set tabstop=4
 
-
 " Highlighting
 syntax on
-
 
 " Line numbers
 set number
 hi LineNr ctermfg=DarkGrey
 
-
 " Ignore case in search patterns
 set ic
 
+" Save history and undo changes even after a reboot
+set undofile
+set undodir=~/.vim/undodir
 
 " Enable mouse if available
 if has('mouse')
   set mouse=a
 endif
 
-
 " Length marker
 set colorcolumn=80
 hi ColorColumn ctermbg=White ctermfg=Black
-
 
 " Install vim-plug if not found
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -49,19 +46,16 @@ if empty(glob('~/.vim/autoload/plug.vim'))
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 endif
 
-
 " Plugins
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
   Plug 'preservim/nerdtree'
   Plug 'editorconfig/editorconfig-vim'
 call plug#end()
 
-
 " Run PlugInstall if there are missing plugins
 autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
   \| PlugInstall --sync | source $MYVIMRC
 \| endif
-
 
 " Run plugins
 " NERDTree Begin
@@ -69,10 +63,8 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 " Start NERDTree and leave the cursor in it.
 autocmd VimEnter * NERDTree
 
-
 " Open the existing NERDTree on each new tab.
 autocmd BufWinEnter * if &buftype != 'quickfix' && getcmdwintype() == '' | silent NERDTreeMirror | endif
-
 
 let g:NERDTreeShowHidden=1
 let g:NERDTreeMouseMode=2
