@@ -1,9 +1,10 @@
-" =================================================
+" ==================================================
 " Description: Vim personal config of be4zad
-" Repo       : https://github.com/be4zad/vimrc
-" License    : GPL v3.0
-" Plugins    : vim-plug, NERDTree, editorconfig-vim
-" =================================================
+" Repo: https://github.com/be4zad/vimrc
+" License: GPL v3.0
+" Plugins: vim-plug, NERDTree, editorconfig-vim, vim
+"          -fugitive
+" ==================================================
 
 " Get the defaults that most users want
 source $VIMRUNTIME/defaults.vim
@@ -50,6 +51,7 @@ endif
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
   Plug 'preservim/nerdtree'
   Plug 'editorconfig/editorconfig-vim'
+  Plug 'tpope/vim-fugitive'
 call plug#end()
 
 " Run PlugInstall if there are missing plugins
