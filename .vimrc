@@ -2,8 +2,6 @@
 " Description: Vim personal config of be4zad
 " Repo: https://github.com/be4zad/vimrc
 " License: GPL v3.0
-" Plugins: vim-plug, NERDTree, editorconfig-vim, vim
-"          -fugitive
 " ==================================================
 
 " Get the defaults that most users want
@@ -52,6 +50,7 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
   Plug 'preservim/nerdtree'
   Plug 'editorconfig/editorconfig-vim'
   Plug 'tpope/vim-fugitive'
+  Plug 'NLKNguyen/papercolor-theme'
 call plug#end()
 
 " Run PlugInstall if there are missing plugins
@@ -73,3 +72,10 @@ let g:NERDTreeMouseMode=2
 let g:NERDTreeWinPos = "left"
 
 " NERDTree End
+
+" papercolor-theme Begin
+
+set background=dark
+colorscheme PaperColor
+
+" papercolor-theme End
