@@ -39,6 +39,9 @@ endif
 set colorcolumn=80
 hi ColorColumn ctermbg=White ctermfg=Black
 
+" Ctrl + k
+noremap <C-k> :bel vert term<cr>
+
 " Install vim-plug if not found
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
