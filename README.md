@@ -1,12 +1,19 @@
 # Vimrc
 My personal Vim config
 
-# Dependencies
+## Dependencies
+* Vim
 * git
 * curl
 
-# Installation
-1. Put .vimrc file to ~/.vimrc (or /etc/vimrc for all users)
-2. Run vim (ignore errors)
-3. Wait for download plugins
-4. Restart Vim
+## Installation
+```
+mkdir be4zad-vimrc
+git -C be4zad-vimrc clone https://github.com/be4zad/Vimrc
+cd be4zad-vimrc
+cp -r ~/.vimrc ~/.vim /tmp/
+cp .vimrc ~/ && cp -r after/ ~/.vim/
+vim -c InstallAllPlugins -c qall
+```
+
+Note: .vimrc and .vim directory can be restored from /tmp/ (before reboot) if you didn't like it.

@@ -42,13 +42,24 @@ hi ColorColumn ctermbg=White ctermfg=Black
 " Ctrl + k
 noremap <C-k> :bel vert term<cr>
 
-" Install vim-plug if not found
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-endif
+" Plugins stuffs
+function InstallPluginManagers()
+  if empty(glob('~/.vim/autoload/plug.vim'))
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+      \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  endif
+endfunction
 
-" Plugins
+function InstallAllPlugins()
+  " Install vim-plug if not found
+  call InstallPluginManagers()
+
+  " Run PlugInstall if there are missing plugins
+  autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+    \| PlugInstall --sync | source $MYVIMRC
+  \| endif
+endfunction
+
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
   Plug 'preservim/nerdtree'
   Plug 'editorconfig/editorconfig-vim'
@@ -56,36 +67,5 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
   Plug 'NLKNguyen/papercolor-theme'
 call plug#end()
 
-" Run PlugInstall if there are missing plugins
-autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-  \| PlugInstall --sync | source $MYVIMRC
-\| endif
-
-" Run plugins
-" NERDTree Begin
-
-" Start NERDTree and leave the cursor in it.
-autocmd VimEnter * NERDTree
-
-" Open the existing NERDTree on each new tab.
-autocmd BufWinEnter * if &buftype != 'quickfix' && getcmdwintype() == '' | silent NERDTreeMirror | endif
-
-let g:NERDTreeShowHidden=1
-let g:NERDTreeMouseMode=2
-let g:NERDTreeWinPos = "left"
-
-" NERDTree End
-
-" papercolor-theme Begin
-
-set background=dark
-colorscheme PaperColor
-
-" papercolor-theme End
-
-" fugitive Begin
-
-" Add branch name to statusline
-set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
-
-" fugitive End
+command! InstallPluginManagers call InstallPluginManagers()
+command InstallAllPlugins call InstallAllPlugins()
