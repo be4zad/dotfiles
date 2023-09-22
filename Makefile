@@ -1,4 +1,4 @@
-STOW_ARGS := --verbose --target=$$HOME vim --ignore .vim/autoload --ignore .vim/bundle
+STOW_ARGS := --verbose --target=$$HOME vim
 YCM_BUILD_ARGS := --clangd-completer --verbose
 
 all:
@@ -11,11 +11,11 @@ uninstall: vim-uninstall-configs
 
 vim-install-configs:
 	@echo 'Installing Vim configs and plugins...'
-	stow $(STOW_ARGS) --restow
+	stow --restow $(STOW_ARGS)
 
 vim-uninstall-configs:
 	@echo 'Uninstalling Vim configs...'
-	stow $(STOW_ARGS) --delete
+	stow --delete $(STOW_ARGS)
 	@echo '* Note that Vim configs and vimrc uninstalled, not plugins.'
 
 vim-plug-install:
