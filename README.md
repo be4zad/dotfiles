@@ -1,19 +1,29 @@
-# Vimrc
-My personal Vim config
+# Dotfiles
+My personal dotfiles
 
 ## Dependencies
 * Vim
+* stow
 * git
 * curl
+* python3
+* cmake
+* clangd
 
 ## Installation
 ```
-mkdir be4zad-vimrc
-git -C be4zad-vimrc clone https://github.com/be4zad/Vimrc
-cd be4zad-vimrc
-cp -r ~/.vimrc ~/.vim /tmp/
-cp .vimrc ~/ && cp -r after/ ~/.vim/
-vim -c InstallAllPlugins -c qall
+mkdir be4zad-dotfiles
+git -C be4zad-dotfiles clone https://github.com/be4zad/dotfiles
+cd be4zad-dotfiles
 ```
 
-Note: .vimrc and .vim directory can be restored from /tmp/ (before reboot) if you didn't like it.
+Then:
+```
+make install
+```
+
+For uninstall:
+```
+make uninstall
+```
+
