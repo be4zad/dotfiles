@@ -7,8 +7,8 @@ My personal dotfiles
 * git
 * curl
 * python3
-* cmake
-* clangd
+* cmake (optional)
+* clangd (optional)
 
 ## Installation
 ```
