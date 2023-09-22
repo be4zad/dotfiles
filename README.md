@@ -7,6 +7,7 @@ My personal dotfiles
 * git
 * curl
 * python3
+* vim-nox (optional)
 * cmake (optional)
 * clangd (optional)
 
