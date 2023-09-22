@@ -13,7 +13,7 @@ My personal dotfiles
 ## Installation
 ```
 mkdir be4zad-dotfiles
-git -C be4zad-dotfiles clone https://github.com/be4zad/dotfiles
+git clone https://github.com/be4zad/dotfiles be4zad-dotfiles
 cd be4zad-dotfiles
 ```
 
