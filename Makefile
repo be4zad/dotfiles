@@ -1,10 +1,10 @@
 STOW_ARGS := --verbose --target=$$HOME vim
-YCM_BUILD_ARGS := --clangd-completer --verbose
+#YCM_BUILD_ARGS := --clangd-completer --verbose
 
 all:
 	@echo 'Run `make install` or `make uninstall`'
 
-vim-install: vim-install-configs vim-plug-install vim-vundle-install vim-install-plugins vim-ycm-build
+vim-install: vim-install-configs vim-plug-install vim-vundle-install vim-install-plugins #vim-ycm-build
 
 install: vim-install
 uninstall: vim-uninstall-configs
@@ -39,6 +39,6 @@ vim-install-plugins:
 	@echo 'Installing Vim plugins through plugin managers...'
 	vim -c InstallAllPlugins
 
-vim-ycm-build:
-	@echo "Building YouCompleteMe plugin..."
-	sh -c 'cd $$HOME/.vim/bundle/YouCompleteMe/ && git submodule update --init --recursive && python3 install.py $(YCM_BUILD_ARHS)';
+#vim-ycm-build:
+#@echo "Building YouCompleteMe plugin..."
+#sh -c 'cd $$HOME/.vim/bundle/YouCompleteMe/ && git submodule update --init --recursive && python3 install.py $(YCM_BUILD_ARHS)';
