@@ -1,4 +1,4 @@
-STOW_ARGS := --verbose --target=$$HOME vim
+STOW_ARGS := --verbose --target=$$HOME
 #YCM_BUILD_ARGS := --clangd-completer --verbose
 
 all:
@@ -6,16 +6,16 @@ all:
 
 vim-install: vim-install-configs vim-plug-install vim-vundle-install vim-install-plugins #vim-ycm-build
 
-install: vim-install
-uninstall: vim-uninstall-configs
+install: vim-install gitignore-install
+uninstall: vim-uninstall-configs gitignore-uninstall
 
 vim-install-configs:
 	@echo 'Installing Vim configs and plugins...'
-	stow --restow $(STOW_ARGS)
+	stow --restow $(STOW_ARGS) vim
 
 vim-uninstall-configs:
 	@echo 'Uninstalling Vim configs...'
-	stow --delete $(STOW_ARGS)
+	stow --delete $(STOW_ARGS) vim
 	@echo '* Note that Vim configs and vimrc uninstalled, not plugins.'
 
 vim-plug-install:
@@ -38,6 +38,17 @@ vim-vundle-install:
 vim-install-plugins:
 	@echo 'Installing Vim plugins through plugin managers...'
 	vim -c InstallAllPlugins
+
+gitignore-install:
+	@echo 'Installing global gitignore...'
+	stow --restow $(STOW_ARGS) git
+	git config --global core.excludesfile ~/.gitignore_global
+
+gitignore-uninstall:
+	@echo 'Uninstalling global gitignore...'
+	stow --delete $(STOW_ARGS) git
+	git config --global core.excludesfile ''
+
 
 #vim-ycm-build:
 #@echo "Building YouCompleteMe plugin..."
