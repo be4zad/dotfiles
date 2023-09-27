@@ -104,6 +104,7 @@ call plug#end()
 command! InstallAllPlugins call InstallAllPlugins()
 
 " ---- lightline.vim ----
+
 let g:lightline = {
       \ 'colorscheme': 'one',
       \ 'active': {
