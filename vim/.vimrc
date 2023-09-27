@@ -1,13 +1,24 @@
-" ==================================================
-" Description: Vim personal config of be4zad
-" Repo: https://github.com/be4zad/vimrc
-" License: GPL v3.0
-" ==================================================
-
 " Get the defaults that most users want
 source $VIMRUNTIME/defaults.vim
 
-" Indent settings
+" ----- Basic ---- "
+
+syntax on
+syntax enable
+set background=dark
+set number
+set numberwidth=6
+filetype plugin indent on
+
+if has('mouse')
+  set mouse=a
+endif
+
+" Ignore case in search patterns
+set ignorecase
+
+" ---- Indent ---- "
+
 set autoindent
 set smartindent
 set copyindent
@@ -16,60 +27,78 @@ set expandtab
 set shiftwidth=2
 set tabstop=4
 
-" Highlighting
-syntax on
-
-" Line numbers
-set number
-hi LineNr ctermfg=DarkGrey
-
-" Ignore case in search patterns
-set ic
+" ---- File ---- "
 
 " Save history and undo changes even after a reboot
 set undofile
 set undodir=~/.vim/undodir
 
-" Enable mouse if available
-if has('mouse')
-  set mouse=a
-endif
+" Use Unix as the standard file type
+set ffs=unix,dos,mac
 
-" Length marker
-set colorcolumn=80
+" Disable wrap for c file type
+autocmd FileType c set nowrap
 
-" Ctrl + k
+" Comments
+set comments=s1:/*,mb:*,ex:*/
+
+" ---- File explorer - Netrw ----
+
+set acd
+let g:netrw_keepdir= 0
+let g:netrw_localcopydircmd = 'cp -r'
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+
+" ---- Key maps ----
+
+" Open vertical term with Ctrl-K
 noremap <C-k> :bel vert term<cr>
 
-" Plugins stuffs
-set rtp+=~/.vim/bundle/Vundle.vim
+" ---- GUI ----
 
-function InstallAllPlugins()
+" Set extra options when running in GUI mode
+if has("gui_running")
+  set guioptions-=T
+  set guioptions+=e
+  set t_Co=256
+  set guitablabel=%M\ %t
+endif
+
+" ---- Other ----
+
+" Fix home/end key in all modes
+map <esc>OH <home>
+cmap <esc>OH <home>
+imap <esc>OH <home>
+tmap <esc>OH <home>
+map <esc>OF <end>
+cmap <esc>OF <end>
+
+" ---- Plugin ----
+
+function! InstallAllPlugins()
+  " Install vim-plug if not found
+  if empty(glob('~/.vim/autoload/plug.vim'))
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+      \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  endif
+
   " Install Vim Plug plugins if there are missing plugins
   autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
     \| PlugInstall --sync | source $MYVIMRC
   \| endif
-
-  " Install Vundle plugins
-  set nocompatible
-  filetype off
-  autocmd VimEnter * PluginInstall
 
   " Exit
   autocmd VimEnter * qa!
 endfunction
 
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
-  Plug 'preservim/nerdtree'
   Plug 'editorconfig/editorconfig-vim'
   Plug 'tpope/vim-fugitive'
-  Plug 'alligator/accent.vim'
+  Plug 'itchyny/lightline.vim'
+  Plug 'morhetz/gruvbox'
+  Plug 'ycm-core/YouCompleteMe'
 call plug#end()
 
-call vundle#begin()
-  Plugin 'VundleVim/Vundle.vim'
-  Plugin 'Valloric/YouCompleteMe'
-call vundle#end()
-
-command! InstallPluginManagers call InstallPluginManagers()
 command! InstallAllPlugins call InstallAllPlugins()

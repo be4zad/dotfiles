@@ -1,0 +1,21 @@
+[user]
+        name = Behzad As
+        email = be4zad@tuta.io
+        signingkey = DD24BDBFCC31C6D8
+[commit]
+        gpgsign = true
+[http]
+        sslVerify = false
+[color]
+        ui = auto
+[credential]
+        helper = cache --timeout=3600
+[init]
+        defaultBranch = main
+[filter "lfs"]
+        clean = git-lfs clean -- %f
+        smudge = git-lfs smudge -- %f
+        process = git-lfs filter-process
+        required = true
+[core]
+	excludesfile = ~/.gitignore_global
