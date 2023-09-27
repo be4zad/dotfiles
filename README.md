@@ -54,7 +54,7 @@ fi
 ```
 
 ## Config
-Edit [user] part in `git/.gitconfig` file and replace name, email and signing key with yourself parameters.
+Edit [user] part in `git/.gitconfig` file and replace name, email and signing key with yourselves parameters.
 
 ## Notes
 1. The script `install_vim_plugins.sh` will install Vim plugins and build YouCompleteMe with options I like, and must use after running stow commands to work. If you don't want to build, send Ctrl-C easily, when building.
