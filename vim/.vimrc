@@ -102,3 +102,26 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 call plug#end()
 
 command! InstallAllPlugins call InstallAllPlugins()
+
+" ---- lightline.vim ----
+let g:lightline = {
+      \ 'colorscheme': 'one',
+      \ 'active': {
+      \   'left': [
+      \     [ 'mode', 'paste' ],
+      \     [ 'filename' ],
+      \     [ 'reeaonly', 'modified' ]
+      \   ],
+      \   'right': [
+      \     [ 'lineinfo' ],
+      \     [ 'percent' ],
+      \     [ 'gitbranch', 'filetype' ]
+      \   ]
+      \ },
+      \ 'component': {
+      \   'charvaluehex': '0x%B',
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'FugitiveHead'
+      \ },
+\ }
