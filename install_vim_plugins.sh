@@ -116,9 +116,9 @@ function ask_ycm_options() {
 function check_user_is_root_ycm() {
   if [ "$(id -u)" == "0" ]; then
     echo ""
-    read -p "You are in root user, add --force-sudo to YCM build options?" yn
+    read -p "You are in root user, add --force-sudo to YCM build options? (y/n)" yn
     case $yn in
-      [Yy]* ) ycm_build_options+= --force-sudo; return;;
+      [Yy]* ) ycm_build_options+=" --force-sudo"; return;;
       [Nn]* ) return;;
       * ) echo "Please answer y or n.";;
     esac
