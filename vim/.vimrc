@@ -8,6 +8,7 @@ syntax enable
 set background=dark
 set number
 set numberwidth=6
+let mapleader=","
 filetype plugin indent on
 
 if has('mouse')
@@ -55,6 +56,12 @@ let g:netrw_liststyle = 3
 " Open vertical term with Ctrl-K
 noremap <C-k> :bel vert term<cr>
 
+" YouCompleteMe
+nnoremap <leader>yd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <leader>yg :YcmCompleter GetType<CR>
+nnoremap <leader>yf :YcmCompleter FixIt<CR>
+nnoremap <leader>yr :<c-u>YcmCompleter RefactorRename <C-R>=Abolish.Coercions.s(expand("<cword>"))<CR>
+
 " ---- GUI ----
 
 " Set extra options when running in GUI mode
@@ -98,6 +105,7 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
   Plug 'tpope/vim-fugitive'
   Plug 'itchyny/lightline.vim'
   Plug 'morhetz/gruvbox'
+  Plug 'tpope/vim-abolish'
   Plug 'ycm-core/YouCompleteMe'
 call plug#end()
 

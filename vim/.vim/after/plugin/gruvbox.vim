@@ -12,5 +12,4 @@ if (empty($TMUX) && getenv('TERM_PROGRAM') != 'Apple_Terminal')
 endif
 
 let g:gruvbox_contrast_dark='hard'
-let g:gruvbox_hls_cursor='bg0'
 colorscheme gruvbox
