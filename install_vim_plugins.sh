@@ -134,4 +134,5 @@ check_dependencies
 ask_user
 install_vim_plugins
 ask_ycm_options
+check_user_is_root_ycm
 build_youcompleteme
