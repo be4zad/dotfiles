@@ -79,7 +79,7 @@ endfunction
 
 augroup fern-custom
     autocmd! *
-    autocmd FileType fern setlocal norelativenumber | setlocal nonumber | set signcolumn=no | call s:init_fern()
+    autocmd FileType fern setlocal norelativenumber | setlocal nonumber | setlocal signcolumn=no | call s:init_fern()
 augroup END
 
 augroup my-fern-preview
