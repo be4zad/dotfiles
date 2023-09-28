@@ -57,10 +57,12 @@ let g:netrw_liststyle = 3
 noremap <C-k> :bel vert term<cr>
 
 " YouCompleteMe
-nnoremap <leader>yd :YcmCompleter GoToDefinitionElseDeclaration<CR>
-nnoremap <leader>yg :YcmCompleter GetType<CR>
-nnoremap <leader>yf :YcmCompleter FixIt<CR>
+nnoremap <leader>ygt :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <leader>yfix :YcmCompleter FixIt<CR>
+nmap <leader>yfw <Plug>(YCMFindSymbolInWorkspace)
+nmap <leader>yfd <Plug>(YCMFindSymbolInDocument)
 nnoremap <leader>yr :<c-u>YcmCompleter RefactorRename <C-R>=Abolish.Coercions.s(expand("<cword>"))<CR>
+
 
 " ---- GUI ----
 
