@@ -91,13 +91,47 @@ function install_vim_plugins() {
   vim -c InstallAllPlugins
 }
 
-function build_youcompleteme() {
-  echo -e "  ${BLUE}*${NC} Building YouCompleteMe..."
-  sh -c "cd $HOME/.vim/plugged/YouCompleteMe/ && git submodule update --init --recursive && python3 install.py $ycm_build_options"
+function ask_ycm_options() {
+  prefer=1
+  while true; do
+    echo ""
+    read -p "Do you want to build YCM with your options? (y/n)" yn
+    case $yn in
+      [Yy]* ) prefer=0; break;;
+      [Nn]* ) return;;
+      * ) echo "Please answer y or n.";;
+    esac
+  done
 
+  echo -ne "Enter your YCM options for build: "
+  while true; do
+    read -p "Enter your YCM options for build: " custom_ycm_options
+    case $custom_ycm_options in
+      "" ) echo "It's empty!";;
+      * ) ycm_build_options=$custom_ycm_options; break;;
+    esac
+  done
+}
+
+function check_user_is_root_ycm() {
+  if [ "$(id -u)" == "0" ]; then
+    echo ""
+    read -p "You are in root user, add --force-sudo to YCM build options?" yn
+    case $yn in
+      [Yy]* ) ycm_build_options+= --force-sudo; return;;
+      [Nn]* ) return;;
+      * ) echo "Please answer y or n.";;
+    esac
+  fi
+}
+
+function build_youcompleteme() {
+  echo -e "  ${BLUE}*${NC} Building YouCompleteMe... (options: $ycm_build_options)"
+  sh -c "cd $HOME/.vim/plugged/YouCompleteMe/ && git submodule update --init --recursive && python3 install.py $ycm_build_options"
 }
 
 check_dependencies
 ask_user
 install_vim_plugins
+ask_ycm_options
 build_youcompleteme
