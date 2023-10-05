@@ -11,9 +11,10 @@ if [ -x /usr/bin/dircolors ] && [ -x /data/data/com.termux/files/usr/bin/dircolo
 fi
 
 # ls aliases
-alias ll='ls -l'
-alias la='ls -A'
-alias l='ls -CF'
+alias ls='ls --color=auto'
+alias ll='ls -l --color=auto'
+alias la='ls -A --color=auto'
+alias l='ls -CF --color=auto'
 
 # Search in history
 alias hist='history | grep --color=auto'
