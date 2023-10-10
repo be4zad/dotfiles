@@ -9,6 +9,7 @@ Install these packages with your package manager:
 * git
 * curl
 * python3
+* python3-dev
 * vim-nox (optional)
 * cmake (optional)
 * clangd (optional)
