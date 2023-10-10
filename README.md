@@ -41,6 +41,8 @@ if [[ $TERMUX_VERSION ]]; then \
 fi
 ```
 
+Note: If Vim didn't install the plugins and stuck, run again.
+
 ## Uninstall
 Uninstall all dotfiles:
 
