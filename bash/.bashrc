@@ -115,3 +115,15 @@ function sethproxy() {
     export http_proxy="$1";
     export https_proxy="$1";
 }
+
+# Search in browser
+function search_in_browser() {
+    search_engine="https://google.com/?q="
+
+    if [ $# -eq 0 ]; then
+        echo "Usage: search_in_browser query"
+        return 1
+    fi
+
+    xdg-open "${search_engine}${1}"
+}
