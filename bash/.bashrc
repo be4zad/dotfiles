@@ -118,7 +118,7 @@ function sethproxy() {
 
 # Search in browser
 function search_in_browser() {
-    search_engine="https://google.com/?q="
+    search_engine="https://google.com/search?q="
 
     if [ $# -eq 0 ]; then
         echo "Usage: search_in_browser query"
@@ -127,3 +127,4 @@ function search_in_browser() {
 
     xdg-open "${search_engine}${1}"
 }
+. "$HOME/.cargo/env"
