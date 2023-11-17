@@ -6,6 +6,7 @@ source $VIMRUNTIME/defaults.vim
 syntax on
 syntax enable
 set background=dark
+set noswapfile
 set number
 set numberwidth=6
 let mapleader=","
