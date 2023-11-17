@@ -127,4 +127,3 @@ function search_in_browser() {
 
     xdg-open "${search_engine}${1}"
 }
-. "$HOME/.cargo/env"
