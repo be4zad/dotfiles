@@ -110,6 +110,7 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
   Plug 'morhetz/gruvbox'
   Plug 'tpope/vim-abolish'
   Plug 'lambdalisue/fern.vim'
+  Plug 'ntpeters/vim-better-whitespace'
   Plug 'ycm-core/YouCompleteMe'
 call plug#end()
 
