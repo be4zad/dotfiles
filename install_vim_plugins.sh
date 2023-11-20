@@ -1,6 +1,6 @@
 vimrc_path="vim/.vimrc"
 plugins_list=$(sed -n '/^[^#].*Plug /s/.*Plug \('\''\)\([^'\''\/]*\/[^'\''\/]*\)\('\''\).*/\2/p' $vimrc_path)
-ycm_build_options="--verbose"
+ycm_build_options="--rust-completer --verbose"
 
 # Colors
 RED='\033[0;31m'
