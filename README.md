@@ -8,11 +8,6 @@ Install these packages with your package manager:
 * stow
 * git
 * curl
-* python3
-* python3-dev
-* vim-nox (optional)
-* cmake (optional)
-* clangd (optional)
 
 ## Setup
 Run:
@@ -36,13 +31,16 @@ Install all dotfiles + Vim plugins:
 stow --adopt --target=$HOME bash && source $HOME/.bashrc && \
 stow --adopt --target=$HOME git && \
 stow --adopt --target=$HOME vim && \
-bash install_vim_plugins.sh && \
+vim -c InstallAllPlugins && \
 if [[ $TERMUX_VERSION ]]; then \
   stow --adopt --target=$HOME termux
 fi
 ```
 
-Note: If Vim didn't install the plugins and stuck, run again.
+### Vim programming plugins
+```
+:CocInstall coc-rust-analyzer
+```
 
 ## Uninstall
 Uninstall all dotfiles:
@@ -60,11 +58,9 @@ fi
 Edit [user] part in `git/.gitconfig` file and replace name, email and signing key with yourselves parameters.
 
 ## Notes
-1. The script `install_vim_plugins.sh` will install Vim plugins and build YouCompleteMe, and must use after running stow commands to work. If you don't want to build, send Ctrl-C easily, when building.
+1. It's good to have backup of your dotfiles, although Stow do it for you probably.
 
-2. It's good to have backup of your dotfiles, although Stow do it for you probably.
-
-3. With above commands in Uninstall part, Vim plugins won't be uninstall; Just dotfiles will be removed and plugins disabled. You can remove ~/.vim directory for do that: (Not recommended)
+2. With above commands in Uninstall part, Vim plugins won't be uninstall; Just dotfiles will be removed and plugins disabled. You can remove ~/.vim directory for do that: (Not recommended)
 
 ```
 rm -rf ~/.vim

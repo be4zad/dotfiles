@@ -57,14 +57,6 @@ let g:netrw_liststyle = 3
 " Open vertical term with Ctrl-K
 noremap <C-k> :bel vert term<cr>
 
-" YouCompleteMe
-nnoremap <leader>ygt :YcmCompleter GoToDefinitionElseDeclaration<CR>
-nnoremap <leader>yfix :YcmCompleter FixIt<CR>
-nmap <leader>yfw <Plug>(YCMFindSymbolInWorkspace)
-nmap <leader>yfd <Plug>(YCMFindSymbolInDocument)
-nnoremap <leader>yr :<c-u>YcmCompleter RefactorRename <C-R>=Abolish.Coercions.s(expand("<cword>"))<CR>
-
-
 " ---- GUI ----
 
 " Set extra options when running in GUI mode
@@ -112,7 +104,7 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
   Plug 'lambdalisue/fern.vim'
   Plug 'ntpeters/vim-better-whitespace'
   Plug 'rust-lang/rust.vim'
-  Plug 'ycm-core/YouCompleteMe'
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 command! InstallAllPlugins call InstallAllPlugins()
