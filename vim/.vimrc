@@ -26,7 +26,7 @@ set smartindent
 set copyindent
 set preserveindent
 set expandtab
-set shiftwidth=2
+set shiftwidth=4
 set tabstop=4
 
 " ---- File ---- "
