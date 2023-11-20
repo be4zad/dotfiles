@@ -111,6 +111,7 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
   Plug 'tpope/vim-abolish'
   Plug 'lambdalisue/fern.vim'
   Plug 'ntpeters/vim-better-whitespace'
+  Plug 'rust-lang/rust.vim'
   Plug 'ycm-core/YouCompleteMe'
 call plug#end()
 
