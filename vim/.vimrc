@@ -29,6 +29,18 @@ set expandtab
 set shiftwidth=4
 set tabstop=4
 
+" ---- Folding ---- "
+
+set nofoldenable
+set foldmethod=indent
+set foldlevelstart=1
+
+augroup remember_folds
+  autocmd!
+  autocmd BufWinLeave * mkview
+  autocmd BufWinEnter * silent! loadview
+augroup END
+
 " ---- File ---- "
 
 " Save history and undo changes even after a reboot
