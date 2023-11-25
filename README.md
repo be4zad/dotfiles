@@ -4,10 +4,11 @@ My personal dotfiles
 ## Dependencies
 Install these packages with your package manager:
 
-* vim
 * stow
 * git
 * curl
+* vim
+* fish
 
 ## Setup
 Run:
@@ -25,10 +26,11 @@ git checkout -b local
 ```
 
 ## Install
-Install all dotfiles + Vim plugins:
+Install all dotfiles + Vim plugins (You can remove commands depending on your needs):
 
 ```
-stow --adopt --target=$HOME bash && source $HOME/.bashrc && \
+stow --adopt --target=$HOME/.config/fish/ fish && \
+source ~/.config/fish/config.fish && \
 stow --adopt --target=$HOME git && \
 stow --adopt --target=$HOME vim && \
 vim -c InstallAllPlugins && \
@@ -46,7 +48,7 @@ fi
 Uninstall all dotfiles:
 
 ```
-stow --delete --adopt --target=$HOME bash && \
+stow --delete --adopt --target=$HOME/.config/fish/ fish && \
 stow --delete --adopt --target=$HOME git && \
 stow --delete --adopt --target=$HOME vim && \
 if [[ $TERMUX_VERSION ]]; then \
