@@ -30,7 +30,6 @@ Install all dotfiles + Vim plugins (You can remove commands depending on your ne
 
 ```
 stow --adopt --target=$HOME/.config/fish/ fish && \
-source ~/.config/fish/config.fish && \
 stow --adopt --target=$HOME git && \
 stow --adopt --target=$HOME vim && \
 vim -c InstallAllPlugins && \
