@@ -9,6 +9,7 @@ Install these packages with your package manager:
 * curl
 * vim
 * fish
+* nodejs (for coc.nvim)
 
 ## Setup
 Run:
