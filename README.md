@@ -1,5 +1,5 @@
 # Dotfiles
-My personal dotfiles
+My personal dotfiles 
 
 ## Dependencies
 Install these packages with your package manager:
