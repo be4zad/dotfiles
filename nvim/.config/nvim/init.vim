@@ -16,6 +16,9 @@ endif
 " Ignore case in search patterns
 set ignorecase
 
+" Highlight searchs
+set hlsearch
+
 " ---- Indent ---- "
 
 set autoindent
