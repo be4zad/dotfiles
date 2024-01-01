@@ -3,9 +3,10 @@
 syntax on
 syntax enable
 set background=dark
+" Why Sorbet not there in nvim? instead use habamax
+"colorscheme sorbet
+colorscheme habamax
 set noswapfile
-set number
-set numberwidth=6
 let mapleader=","
 filetype plugin indent on
 
@@ -89,7 +90,6 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
   Plug 'editorconfig/editorconfig-vim'
   Plug 'tpope/vim-fugitive'
   Plug 'itchyny/lightline.vim'
-  Plug 'morhetz/gruvbox'
   Plug 'tpope/vim-abolish'
   Plug 'ntpeters/vim-better-whitespace'
   Plug 'preservim/nerdtree'
